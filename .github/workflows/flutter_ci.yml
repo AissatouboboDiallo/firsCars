@@ -1,0 +1,48 @@
+name: Flutter CI # Le nom de ton robot
+
+# 1. Déclencheurs : Quand est-ce que le robot s'allume ?
+on:
+  push:
+    branches: [ main, master ] # Dès que tu push sur la branche principale
+  pull_request:
+    branches: [ main, master ] # Ou quand tu ouvres une Merge/Pull Request
+
+# 2. Les tâches que le robot doit accomplir
+jobs:
+  test_and_build:
+    runs-on: ubuntu-latest # Le robot utilise un ordinateur virtuel sous Linux
+
+    steps:
+      # Étape A : Récupérer le code de ton projet
+      - name: Récupération du code source
+        uses: actions/checkout@v4
+
+      # Étape B : Installer Java (obligatoire pour compiler la partie Android de Flutter)
+      - name: Installation de Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      # Étape C : Installer l'environnement Flutter
+      - name: Installation de Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable' # Utilise la version stable de Flutter
+          # optionnel : flutter-version: '3.x.x' (si tu veux bloquer une version précise)
+
+      # Étape D : Télécharger les packages de ton pubspec.yaml (Firebase, etc.)
+      - name: Téléchargement des dépendances
+        run: flutter pub get
+
+      # Étape E : Analyser le code (vérifier les fautes de frappe et bonnes pratiques)
+      - name: Analyse syntaxique (Linting)
+        run: flutter analyze
+
+      # Étape F : Lancer le fameux robot-goûteur (tes tests unitaires)
+      - name: Exécution des tests unitaires
+        run: flutter test
+
+      # Étape G : Vérifier que l'application compile sans erreur pour Android
+      - name: Build de vérification (APK Android)
+        run: flutter build apk --debug # Le mode debug est plus rapide à générer pour la CI
