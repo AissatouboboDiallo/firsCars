@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184475537118",
+    "project_id": "gestionfirecars",
+    "storage_bucket": "gestionfirecars.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184475537118:android:a65d950084cbc880897c4f",
+        "android_client_info": {
+          "package_name": "com.example.fire_cars"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQiB3cwWpyHTfGZKFpkWGTYYtW3WCtIIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
