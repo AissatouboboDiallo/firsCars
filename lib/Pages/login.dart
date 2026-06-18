@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../services/authentification.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, required this.title });
 
@@ -10,7 +12,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool inLoginProcess=false ;
+
   @override
+  signIn() {
+  print("Connexion avec google") ;
+  setState(() {
+    inLoginProcess=true ;
+    AuthService().signInWithGoogle() ;
+  });
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -45,20 +56,19 @@ class _LoginPageState extends State<LoginPage> {
                     )
                 ),
                 SizedBox(height: 20,),
-                ElevatedButton(onPressed: () {
-                  print("Boutton connexion cliqué") ;
-                } ,
-                  child: Text("Continuer avec Google", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),) ,
-                  style: ElevatedButton.styleFrom(
+                inLoginProcess ? Center(child: CircularProgressIndicator(),) :
+                  ElevatedButton(onPressed: () => signIn() ,
+                    child: Text("Continuer avec Google", style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),) ,
+                    style: ElevatedButton.styleFrom(
 
-                    backgroundColor: Colors.amberAccent ,
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) ,
-                  ),
+                      backgroundColor: Colors.amberAccent ,
+                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10) ,
+                    ),
+                    )
+
+
                   )
-
-
-                )
 
               ],
             ),

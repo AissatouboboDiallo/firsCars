@@ -1,9 +1,28 @@
-import 'package:fire_cars/login.dart';
+import 'package:fire_cars/Pages/login.dart';
+import 'package:fire_cars/Pages/wrapper.dart';
+import 'package:fire_cars/profile/profile.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:fire_cars/services/authentification.dart';
 
 
-void main() {
-  runApp(const MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(
+  MultiProvider(providers: [
+    StreamProvider.value(
+      initialData: null,
+      value: AuthService().user,
+    )
+  ],
+  child: MyApp(),
+  )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,11 +35,18 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
-      ),
+        colorScheme:ColorScheme.fromSeed(seedColor: Colors.yellow),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.white,),
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
 
-      home: const LoginPage(title: 'Bienvenu sur la page de connexion'),
+      ),
+      initialRoute: '/',
+      routes:  {
+        '/': (context) =>Wrapper(),
+        '/profile': (context) => Profile()
+      },
+
     );
   }
 }

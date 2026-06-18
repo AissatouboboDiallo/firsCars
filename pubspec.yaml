@@ -30,7 +30,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^8.1.0
+  google_fonts: ^8.1.0  # pour la gestion des fonts
+  firebase_auth: ^6.5.1  # pour la gestion des flux d'authentification lui sert precisement à connecter l'utilisateur
+  firebase_core: ^4.9.0 # pour la gestion des données sur firebase
+  google_sign_in: ^6.2.1 # pour la gestion des flux d'authentification sert à  deconnecter l'utilisateur
+  provider: ^6.1.5+1 # pour la gestion du flux d'authentification ça sert à garder l'état de l'utilisateur connecté
+  cloud_firestore: ^6.4.1 # pour la gestion des données sur firebase
+  firebase_storage: ^13.4.1 # pour la gestion des images sur firebase
+  image_picker: ^1.2.2 # pour la selection des images sur android ou ios
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
