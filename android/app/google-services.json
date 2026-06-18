@@ -12,7 +12,20 @@
           "package_name": "com.example.fire_cars"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "184475537118-sgibs2vb17vofrf5j8orlivn22r7mcfe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fire_cars",
+            "certificate_hash": "49377561d3d3ca02a0135ca515122af62a339b1e"
+          }
+        },
+        {
+          "client_id": "184475537118-k5gvmtl003smjcbn29vo0qhjlc3dbfa3.apps.googleusercontent.com",
+          "client_type": 3
+         }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDQiB3cwWpyHTfGZKFpkWGTYYtW3WCtIIk"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184475537118-k5gvmtl003smjcbn29vo0qhjlc3dbfa3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
